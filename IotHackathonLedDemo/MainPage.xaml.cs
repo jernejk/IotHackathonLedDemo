@@ -20,6 +20,8 @@ namespace IotHackathonLedDemo
         private GpioPin ledPin2;
         private GpioPin ledPin3;
 
+        private PushBulletHelper pushBullet = new PushBulletHelper();
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -42,6 +44,9 @@ namespace IotHackathonLedDemo
             {
                 ToggleLed(i);
             }
+
+            pushBullet.ToggleLed += ToggleLed;
+            pushBullet.Start();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
