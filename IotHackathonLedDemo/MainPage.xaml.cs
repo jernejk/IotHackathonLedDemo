@@ -72,7 +72,7 @@ namespace IotHackathonLedDemo
             // Change color of LED indicator.
             rect.Fill = newState ? ledOn : ledOff;
 
-            if (ledPin1 != null)
+            if (ledPin != null)
             {
                 ledPin.Write(newState ? GpioPinValue.Low : GpioPinValue.High);
             }
