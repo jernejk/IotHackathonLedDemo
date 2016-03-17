@@ -1,4 +1,5 @@
 ﻿using Windows.Devices.Gpio;
+using Windows.Foundation.Metadata;
 using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -27,12 +28,17 @@ namespace IotHackathonLedDemo
 
         private void PageLoaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            controller = GpioController.GetDefault();
-            if (controller != null)
+            // Check if this API is available.
+            if (ApiInformation.IsTypePresent("Windows.Devices.Gpio.GpioController"))
             {
-                ledPin1 = InitLed(21);
-            }
+                controller = GpioController.GetDefault();
 
+                if (controller != null)
+                {
+                    ledPin1 = InitLed(21);
+                }
+            }
+            
             // Set to initial value
             ToggleLed(1);
         }
