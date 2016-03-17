@@ -16,6 +16,16 @@
                 <Ellipse x:Name="LedIndicator1" Width="30" Height="30" Fill="Red" />
             </StackPanel>
 
+            <StackPanel HorizontalAlignment="Left" Margin="0,20" Orientation="Horizontal">
+                <TextBlock Text="LED 2 status: " Style="{StaticResource TitleTextBlockStyle}" Margin="0,0,10,0" />
+                <Ellipse x:Name="LedIndicator2" Width="30" Height="30" Fill="Red" />
+            </StackPanel>
+
+            <StackPanel HorizontalAlignment="Left" Margin="0,20" Orientation="Horizontal">
+                <TextBlock Text="LED 3 status: " Style="{StaticResource TitleTextBlockStyle}" Margin="0,0,10,0" />
+                <Ellipse x:Name="LedIndicator3" Width="30" Height="30" Fill="Red" />
+            </StackPanel>
+
             <Button Click="Button_Click">Toggle LED 1</Button>
         </StackPanel>
     </Grid>

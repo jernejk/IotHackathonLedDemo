@@ -17,6 +17,8 @@ namespace IotHackathonLedDemo
 
         private GpioController controller;
         private GpioPin ledPin1;
+        private GpioPin ledPin2;
+        private GpioPin ledPin3;
 
         public MainPage()
         {
@@ -31,10 +33,15 @@ namespace IotHackathonLedDemo
             if (controller != null)
             {
                 ledPin1 = InitLed(21);
+                ledPin2 = InitLed(20);
+                ledPin3 = InitLed(26);
             }
 
             // Set to initial value
-            ToggleLed(1);
+            for (int i = 1; i <= 3; ++i)
+            {
+                ToggleLed(i);
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -62,6 +69,14 @@ namespace IotHackathonLedDemo
                 case 1:
                     ToggleLed(LedIndicator1, ledPin1);
                     break;
+
+                case 2:
+                    ToggleLed(LedIndicator2, ledPin2);
+                    break;
+
+                case 3:
+                    ToggleLed(LedIndicator3, ledPin3);
+                    break;
             }
         }
         
@@ -80,7 +95,17 @@ namespace IotHackathonLedDemo
 
         private void Grid_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-            ToggleLed(1);
+            int key = (int)e.Key;
+            if (key >= 48 && key <= 57)
+            {
+                // Keys 0-9 above character keys (present also on laptops)
+                ToggleLed(key - 48);
+            }
+            else if (key >= 96 && key <= 105)
+            {
+                // Keys 0-9 on numeric keyboard
+                ToggleLed(key - 96);
+            }
         }
     }
 }
